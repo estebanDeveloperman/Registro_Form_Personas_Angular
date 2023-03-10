@@ -1,48 +1,108 @@
 <nav class="navbar navbar-dark bg-primary">
-  <a class="navbar-brand" href="/"> Angular Simple CRUD </a>
+  <a class="navbar-brand titulo" href="/"> Registro de Personas </a>
 </nav>
 
 <div class="container">
   <div class="row">
-    <div class="col-md-9 mt-4">
-      <div class="card mt-4 mb-3">
-        <div class="card-body">
-          <div class="card-title">Insert A new Employee</div>
+    <div class="col-md-12 mt-4 padre">
+      <div class="card mt-4 mb-3 formulario">
+        <div class="card-body formu">
+          <div class="card-title title_form">Inserta un nuevo registro</div>
           <div class="form-group mb-3">
             <input
               type="text"
-              [(ngModel)]="selectedEmployee.name"
-              placeholder="Insert a Name"
+              [(ngModel)]="selectedPersona.name"
+              placeholder="Escribe tu nombre"
               class="form-control"
             />
           </div>
           <div class="form-group mb-3">
             <input
-              type="text"
-              [(ngModel)]="selectedEmployee.country"
-              placeholder="Insert a Country"
+              type="email"
+              [(ngModel)]="selectedPersona.email"
+              placeholder="Escribe tu correo"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group mb-3">
+            <input
+              type="number"
+              [(ngModel)]="selectedPersona.dni"
+              placeholder="Escribe tu dni"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label>Inserta tu fecha de nacimiento</label>
+            <input
+              onkeydown="return false"
+              type="date"
+              [(ngModel)]="selectedPersona.fecha_de_nacimiento"
+              placeholder="Inserta tu fecha de nacimiento"
               class="form-control"
             />
           </div>
-          <button (click)="addOrEdit()" class="btn btn-primary">Submit</button>
+          <div class="form-group mb-3 seleccionargenero">
+            <label class="genero_sel">Selecciona tu género:</label><br />
+            <div class="generos_radiobuttons">
+              <div>
+                <input
+                  type="radio"
+                  id="opcion1"
+                  name="opcion"
+                  value="Masculino"
+                  [(ngModel)]="selectedPersona.genero"
+                  checked
+                />
+                <label for="Masculino">Masculino</label><br />
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="opcion2"
+                  name="opcion"
+                  value="Femenino"
+                  [(ngModel)]="selectedPersona.genero"
+                />
+                <label for="Femenino">Femenino</label><br />
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button type="submit" (click)="agregarRegistro()" class="btn btn-primary boton_enviar">
+              Enviar
+            </button>
+          </div>
         </div>
       </div>
-      <ul class="list-group">
-        <li
-          *ngFor="let employee of employeeArray"
-          class="list-group-item list-group-item-action"
-        >
-          <span class="badge bg-primary">{{ employee.id }}</span>
-          {{ employee.name }} - {{ employee.country }}
-        </li>
-      </ul>
-    </div>
-    <div class="col-md-2">
-      <img
-        width="280"
-        alt="Angular Logo"
-        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
-      />
+      <div class="contenedor_table mt-4">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">N</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Correo</th>
+              <th scope="col">DNI</th>
+              <th scope="col">Fecha de Nacimiento</th>
+              <th scope="col">Género</th>
+              <th scope="col">Fecha y Hora de Registro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let persona of listaPersonas">
+              <td>{{ persona.id }}</td>
+              <td>{{ persona.name }}</td>
+              <td>{{ persona.email }}</td>
+              <td>{{ persona.dni }}</td>
+              <td>{{ persona.fecha_de_nacimiento | date : "dd/MM/yyyy" }}</td>
+              <td>{{ persona.genero }}</td>
+              <td>{{ persona.fecha_hora_actual }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

@@ -1,0 +1,76 @@
+.titulo {
+  margin-left: 25px;
+}
+
+.title_form {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.padre {
+  min-height: 500px;
+  display: flex;
+  gap: 40px;
+}
+
+.formulario {
+  width: 400px;
+  height: 415px;
+  padding-bottom: 5px;
+}
+
+.genero_sel {
+  margin-bottom: 5px;
+}
+
+.generos_radiobuttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.generos_radiobuttons #opcion1,
+.generos_radiobuttons #opcion2 {
+  cursor: pointer;
+}
+
+.boton_enviar {
+  width: 70%;
+}
+
+.contenedor_table {
+  height: 1000px;
+}
+
+table {
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+table thead th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+table thead tr {
+  background-color: #445a69;
+  color: white;
+}
+
+table tbody tr:hover {
+  cursor: pointer;
+  background-color: #7297b0;
+  /* transition: background-color 0.05s ease; */
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.seleccionargenero #opcion1,
+.seleccionargenero #opcion2 {
+  margin-right: 4px;
+}
